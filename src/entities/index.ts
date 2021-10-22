@@ -1,7 +1,7 @@
 import Koa from 'koa';
-import { DefaultState, DefaultContext, ParameterizedContext } from "koa";
+import { DefaultState, DefaultContext, ParameterizedContext } from 'koa';
 import { createConnection, Connection } from 'typeorm';
-import { PostEntity } from "./post.entity";
+import { PostEntity } from './post.entity';
 import { Users } from './users.entity';
 import { config } from 'dotenv';
 import 'colors';
@@ -21,12 +21,12 @@ export const connectDB = async (app: Koa<DefaultState, DefaultContext>) => {
       database: 'chargo',
       entities: [PostEntity, Users],
       synchronize: true,
-      logging: false
+      logging: false,
     });
 
     app.context.db = connection;
     console.log('connect db successfully!');
   } catch (e) {
-      console.error('failed use mysql', e);
+    console.error('failed use mysql', e);
   }
-}
+};
