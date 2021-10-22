@@ -39,10 +39,9 @@
     }
   },
   "lint-staged": {
-    "./src/**/*/.ts": [
+    "./src/**/*/*.ts": [
       "eslint",
-      "prettier --write",
-      "git add ."
+      "prettier --write"
     ]
   },
   "dependencies": {
