@@ -5,13 +5,21 @@ import {
   Get,
   Post,
   Put,
-  Delete
+  Delete,
+  Ctx
 } from 'routing-controllers';
+import { Service } from 'typedi';
+import { CTX } from '../interface';
+import {UsersService} from "../services";
 
 @Controller('/users')
+@Service()
 export class UsersController {
+  constructor(private readonly usersService: UsersService) {
+    console.log(usersService);
+  }
   @Get()
-  getAll() {
+  getAll(@Ctx() ctx: CTX) {
     return 'return all';
   }
 
