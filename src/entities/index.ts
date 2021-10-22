@@ -14,10 +14,10 @@ export const connectDB = async (app: Koa<DefaultState, DefaultContext>) => {
   try {
     const connection = await createConnection({
       type: 'mysql',
-      host: 'localhost',
+      host: DB_HOST,
       port: 3306,
-      username: 'root',
-      password: 'root',
+      username: DB_USER,
+      password: DB_PASS,
       database: 'chargo',
       entities: [PostEntity, Users],
       synchronize: true,

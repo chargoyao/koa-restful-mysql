@@ -1,30 +1,30 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { SharedProp } from './sharedProp.entity';
-import { PostEntity } from "./post.entity";
+import { PostEntity } from './post.entity';
 
 export type UserType = 'admin' | 'user';
 
-@Entity({name: 'users'})
+@Entity({ name: 'users' })
 export class Users extends SharedProp {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column({name: 'first_name', nullable: false})
+  @Column({ name: 'first_name', nullable: false })
   firstName!: string;
 
-  @Column({name: 'last_name', nullable: false})
+  @Column({ name: 'last_name', nullable: false })
   lastName!: string;
 
-  @Column({name: 'birth_of_date', nullable: false, type: 'date'})
+  @Column({ name: 'birth_of_date', nullable: false, type: 'date' })
   birthOfDate!: string;
 
-  @Column({unique: true, nullable: false})
+  @Column({ unique: true, nullable: false })
   email!: string;
 
-  @Column({default: 'user'})
+  @Column({ default: 'user' })
   type!: UserType;
 
-  @Column({nullable: false})
+  @Column({ nullable: false })
   password!: string;
 
   @Column({ nullable: false })
@@ -32,9 +32,9 @@ export class Users extends SharedProp {
 
   @OneToMany(() => PostEntity, (post: PostEntity) => post.user, {
     onDelete: 'CASCADE',
-    onUpdate: 'CASCADE'
+    onUpdate: 'CASCADE',
   })
-  posts!: Array<PostEntity>
+  posts!: Array<PostEntity>;
 
-  accessToken?: string
+  accessToken?: string;
 }
